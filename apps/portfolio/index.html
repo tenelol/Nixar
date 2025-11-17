@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>Hollow World ? - tener's portfolio</title>
+    <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+    <div class="page">
+        <header class="hero">
+            <div class="hero-text">
+                <h1 class="hero-title">Hello World</h1>
+                <p class="hero-subtitle">
+                    this is the portfolio created by tener.
+                </p>
+		<div class="about-link">
+		<p>
+			こんにちは。
+			ごきげんよう。
+		</p>
+    		<p>
+        		詳しいプロフィールは <a href="/about">こちら</a>。
+    		</p>
+		</div>
+            </div>
+            <div class="hero-illustration">
+                <!-- アヒルの画像を apps/portfolio/duck.png とかで置いておく -->
+                <img src="/static/ore.png" alt="duck illustration" />
+            </div>
+        </header>
+
+        <main>
+            <section class="projects-section">
+                <h2 class="section-title">Projects</h2>
+
+                <!-- JS がここにカードを差し込む -->
+                <div id="projects" class="projects-grid">
+                    <!-- /api/projects が空でも、とりあえずこのプレースホルダはJSで上書きされる -->
+                    <div class="project-card project-placeholder">
+                        <span>Loading projects...</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,6 @@
+mywebfw
+*.exe
+
+node_modules/
+dist/
+
