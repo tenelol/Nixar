@@ -29,21 +29,7 @@ function getFavicon(url) {
 }
 
 
-/*
-const html = projects
-  .map(
-    (p) => `
-      <a class="project-card"
-         href="${p.url}"
-         target="_blank"
-         rel="noopener noreferrer">
-        <h2>${p.name}</h2>
-        <p>${p.description}</p>
-      </a>
-    `
-  )
-  .join("");
-*/
+
 
 const html = projects
   .map(
@@ -77,18 +63,4 @@ container.innerHTML = html;
   }
 });
 
-// 例：loadProjects の中
-/*
-projects.forEach(p => {
-   const card = document.createElement('article');
-    card.className = 'project-card';
 
-    card.innerHTML = `
-        <h3>${p.name}</h3>
-        <p>${p.description}</p>
-        ${p.url ? `<a class="card-link" href="${p.url}" target="_blank" rel="noopener">View</a>` : ''}
-    `;
-
-    container.appendChild(card);
-});
-*/
