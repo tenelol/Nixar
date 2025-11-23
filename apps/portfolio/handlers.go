@@ -25,8 +25,15 @@ var projects = []Project{
     {
         ID:          2,
         Name:        "My Framework",
-        Description: "My portfolio configuration with self-made framework",
+        Description: "my portfolio configuration with self-made framework",
 	URL:         "https://github.com/tenelol/mywebfw", 
+    },
+
+        {
+        ID:          3,
+        Name:        "linux-notes",
+        Description: "my first notes to learn linux",
+	URL:         "https://github.com/tenelol/linux-notes", 
     },
     // 必要なだけ続ける
 }
