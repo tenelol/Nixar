@@ -133,6 +133,12 @@ main {
         border-color 160ms ease-out;
 }
 
+.project-card a:link,
+.project-card a:visited {
+    color: var(--accent);
+}
+
+
 .project-card:hover {
     transform: translateY(-4px);
     box-shadow:
