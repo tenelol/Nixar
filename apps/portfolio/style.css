@@ -181,27 +181,43 @@ main {
 /* モバイル対応 */
 
 @media (max-width: 720px) {
-    .page {
-        margin: 1rem;
-        padding: 1.5rem;
-        border-radius: 1.2rem;
-    }
+  .page {
+    margin: 0.5rem;
+    padding: 1rem;
+    border-radius: 0.8rem;
+  }
 
-    .hero {
-        flex-direction: column;
-        align-items: flex-start;
-    }
+  main {
+    margin-top: 4rem;  /* 10rem はスマホだと長すぎ */
+  }
 
-    .hero-illustration {
-        align-self: flex-end;
-        width: 140px;
-        height: 140px;
-    }
+  .hero-title {
+    font-size: 2rem;
+  }
 
-    .projects-grid {
-        grid-template-columns: 1fr;
-    }
+  .hero-subtitle {
+    font-size: 0.9rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr; /* 1列に */
+    gap: 1rem;
+  }
+
+  .project-card {
+    padding: 1rem 1.1rem;
+  }
+
+  .swipe-container {
+    max-width: 300px;
+    margin-top: 1rem;
+  }
+
+  .tinder--cards {
+    min-height: 260px;
+  }
 }
+
 
 /* --- カードにアイコンを入れるための拡張 --- */
 
