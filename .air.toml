@@ -4,7 +4,7 @@ tmp_dir = "tmp"
 
 [build]
 # ここがめちゃ大事：cmd/server をビルドターゲットにする
-cmd = "go build -o ./tmp/main ./cmd/dev-server"
+cmd = "go build -o ./tmp/main ./cmd/server"
 bin = "tmp/main"
 
 # 実行コマンド（環境変数とか足したければここで）
