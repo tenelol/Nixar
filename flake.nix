@@ -41,6 +41,11 @@
         ];
         GO111MODULE = "on";
       };
+      templates.default = {
+  	path = ./template;
+  	description = "Minimal Nixar Web App Template";
+      };
+
 
       # ================= NixOS module =================
       nixosModules.nixar = { config, lib, pkgs, ... }:
