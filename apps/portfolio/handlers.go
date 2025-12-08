@@ -4,7 +4,7 @@ package portfolio
 import (
 	"net/http"
 
-	"mywebfw/framework"
+	"nixar/framework"
 )
 
 type Project struct {
@@ -34,7 +34,7 @@ var projects = []Project{
         ID:          2,
         Name:        "My Framework",
         Description: "my portfolio configuration with self-made framework",
-	URL:         "https://github.com/tenelol/mywebfw", 
+	URL:         "https://github.com/tenelol/nixar", 
     },
 
         {
@@ -49,6 +49,5 @@ var projects = []Project{
 
 // GET /api/projects
 func ProjectsAPI(ctx *framework.Context) {
-	framework.JSON(ctx, http.StatusOK, projects)
+    ctx.JSON(http.StatusOK, projects)
 }
-

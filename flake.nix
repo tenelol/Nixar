@@ -1,5 +1,5 @@
 {
-  description = "mywebfw - minimal Nix flake for Go server";
+  description = "Nixar - minimal Nix flake for Go server";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
@@ -9,7 +9,7 @@
       pkgs = import nixpkgs { inherit system; };
 
       server = pkgs.buildGoModule {
-        pname = "mywebfw-server";
+        pname = "nixar-server";
         version = "0.1.0";
 
         src = ./.;
@@ -43,41 +43,41 @@
       };
 
       # ================= NixOS module =================
-      nixosModules.mywebfw = { config, lib, pkgs, ... }:
+      nixosModules.nixar = { config, lib, pkgs, ... }:
         let
-          cfg = config.services.mywebfw;
+          cfg = config.services.nixar;
         in {
-          options.services.mywebfw = {
-            enable = lib.mkEnableOption "mywebfw Go web server";
+          options.services.nixar = {
+            enable = lib.mkEnableOption "nixar Go web server";
 
             package = lib.mkOption {
               type = lib.types.package;
               default = server;
-              description = "mywebfw server package to run";
+              description = "nixar server package to run";
             };
 
             user = lib.mkOption {
               type = lib.types.str;
-              default = "mywebfw";
-              description = "User account under which the mywebfw service runs.";
+              default = "nixar";
+              description = "User account under which the nixar service runs.";
             };
 
             group = lib.mkOption {
               type = lib.types.str;
-              default = "mywebfw";
-              description = "Group under which the mywebfw service runs.";
+              default = "nixar";
+              description = "Group under which the nixar service runs.";
             };
 
             port = lib.mkOption {
               type = lib.types.int;
               default = 8080;
-              description = "Port the mywebfw server listens on.";
+              description = "Port the nixar server listens on.";
             };
 
             workingDir = lib.mkOption {
               type = lib.types.path;
-              default = "/var/lib/mywebfw";
-              description = "Working directory for mywebfw server.";
+              default = "/var/lib/nixar";
+              description = "Working directory for nixar server.";
             };
 
             extraArgs = lib.mkOption {
@@ -89,7 +89,7 @@
             openFirewall = lib.mkOption {
               type = lib.types.bool;
               default = true;
-              description = "Whether to open the firewall for the mywebfw port.";
+              description = "Whether to open the firewall for the nixar port.";
             };
           };
 
@@ -102,8 +102,8 @@
 
             users.groups.${cfg.group} = {};
 
-            systemd.services.mywebfw = {
-              description = "mywebfw Go web server";
+            systemd.services.nixar = {
+              description = "nixar Go web server";
               after = [ "network.target" ];
               wantedBy = [ "multi-user.target" ];
 

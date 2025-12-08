@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"nexar/framework"
-	"nexar/apps/portfolio"
+	"nixar/framework"
+	"nixar/apps/portfolio"
 )
 
 func main() {

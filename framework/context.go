@@ -1,6 +1,7 @@
 package framework
 
 import (
+	"encoding/json"
 	"net/http"
 )
 
@@ -32,9 +33,11 @@ func (c *Context) QueryDefault(key, def string) string {
 	return v
 }
 
-// JSONレスポンス
+// ★ ここを書き換え
 func (c *Context) JSON(status int, v any) {
-	JSON(c, status, v)
+	c.W.Header().Set("Content-Type", "application/json; charset=utf-8")
+	c.W.WriteHeader(status)
+	_ = json.NewEncoder(c.W).Encode(v)
 }
 
 // HTMLファイル送信（no-cache）
