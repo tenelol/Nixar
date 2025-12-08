@@ -1,0 +1,16 @@
+# .air.toml
+root = "."
+tmp_dir = "tmp"
+
+[build]
+# ここがめちゃ大事：cmd/server をビルドターゲットにする
+cmd = "go build -o ./tmp/main ./cmd/dev-server"
+bin = "tmp/main"
+
+# 実行コマンド（環境変数とか足したければここで）
+full_bin = "./tmp/main"
+
+# 監視対象の拡張子
+include_ext = ["go", "tpl", "html", "css", "js"]
+exclude_dir = ["tmp", "node_modules", "dist"]
+
