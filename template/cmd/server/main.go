@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	"nixar/framework"
-	"nixar/apps/web"
+	"github.com/tenelol/nixar/framework"
+	"github.com/tenelol/nixar/apps/web"
 )
 
 func main() {

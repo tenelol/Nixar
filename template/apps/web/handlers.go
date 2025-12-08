@@ -3,7 +3,7 @@ package web
 import (
 	"net/http"
 
-	"nixar/framework"
+	"github.com/tenelol/nixar/framework"
 )
 
 func Index(c *framework.Context) {

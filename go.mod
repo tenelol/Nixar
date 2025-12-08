@@ -1,7 +1,3 @@
-module nixar
+module github.com/tenlol/nixar
 
 go 1.22
-
-require (
-	nixar v0.0.0
-)

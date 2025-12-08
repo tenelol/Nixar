@@ -4,7 +4,7 @@ package portfolio
 import (
 	"net/http"
 
-	"nixar/framework"
+	"github.com/tenelol/nixar/framework"
 )
 
 type Project struct {
