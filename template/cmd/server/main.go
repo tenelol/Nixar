@@ -5,7 +5,7 @@ import (
 	"net/http"
 
 	"github.com/tenelol/nixar/framework"
-	"github.com/tenelol/nixar/apps/web"
+	"nixar-template/apps/web"
 )
 
 func main() {
