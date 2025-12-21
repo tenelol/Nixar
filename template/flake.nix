@@ -17,7 +17,7 @@
         src = ./.;
         modRoot = ".";
         subPackages = [ "./cmd/server" ];
-        vendorHash = null;
+        vendorHash = "sha256-MMDjNtjZdpC0JZf+6jg2a5MPmf3gSFlvB1nyY0GowEw=";
       };
 
       apps.${system}.default = {
