@@ -3,7 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
-    nixar.url = "path:../.."; # テンプレ内部から見たNixar
+    nixar.url = "github:tenelol/Nixar";
   };
 
   outputs = { self, nixpkgs, nixar }:
@@ -35,4 +35,3 @@
       };
     };
 }
-
