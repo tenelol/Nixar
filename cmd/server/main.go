@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
+	"github.com/tenelol/nixar/apps/simple"
 	"github.com/tenelol/nixar/framework"
-	"github.com/tenelol/nixar/apps/portfolio"
 )
 
 func main() {
@@ -16,23 +16,15 @@ func main() {
 
 	// ページ
 	app.Get("/", func(ctx *framework.Context) {
-		ctx.HTMLFile("apps/portfolio/index.html")
+		ctx.HTMLFile("apps/simple/index.html")
 	})
 
 	app.Get("/about", func(ctx *framework.Context) {
-		ctx.HTMLFile("apps/portfolio/about.html")
+		ctx.HTMLFile("apps/simple/about.html")
 	})
 
-	app.Get("/works", func(ctx *framework.Context) {
-		ctx.HTMLFile("apps/portfolio/works.html")
-	})
-
-	app.Get("/contact", func(ctx *framework.Context) {
-		ctx.HTMLFile("apps/portfolio/contact.html")
-	})
-
-	// API: プロジェクト一覧
-	app.Get("/api/projects", portfolio.ProjectsAPI)
+	// API: サンプル
+	app.Get("/api/hello", simple.HelloAPI)
 
 	// ヘルスチェック
 	app.Get("/health", func(ctx *framework.Context) {
@@ -42,8 +34,8 @@ func main() {
 	})
 
 	// 静的ファイル
-	staticHandler := http.StripPrefix("/static/", framework.Static("apps/portfolio"))
-	app.Get("/static/:filePath", framework.WrapHTTPHandler(staticHandler))
+	staticHandler := http.StripPrefix("/static/", framework.Static("apps/simple"))
+	app.Get("/static/:file", framework.WrapHTTPHandler(staticHandler))
 
 	addr := ":8080"
 	log.Println("Listening on", addr)
@@ -52,4 +44,3 @@ func main() {
 		log.Fatal(err)
 	}
 }
-
