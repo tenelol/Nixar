@@ -20,6 +20,9 @@
         modRoot = ".";
         subPackages = [ "./cmd/server" ];
         vendorHash = null;
+        postPatch = ''
+          go mod edit -replace github.com/tenelol/nixar=${nixar}
+        '';
       };
 
       apps.${system}.default = {
