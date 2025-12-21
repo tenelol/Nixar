@@ -11,7 +11,19 @@ Go標準の`net/http`をベースにした最小構成のWebフレームワー�
 - 静的ファイル配信（no-cache）
 - `http.Handler` / `http.HandlerFunc` のラッパー
 
-## インストール
+## インストール（Nix）
+```bash
+mkdir myapp
+cd myapp
+nix flake init -t github:tenelol/nixar
+```
+
+起動:
+```bash
+nix run
+```
+
+## インストール（Goモジュール）
 ```bash
 go get github.com/tenelol/nixar
 ```

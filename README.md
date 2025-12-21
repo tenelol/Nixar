@@ -11,7 +11,19 @@ Languages: English | [日本語](README.ja.md)
 - Static file handler (no-cache)
 - Adapter to wrap `http.Handler` / `http.HandlerFunc`
 
-## Install
+## Install (Nix)
+```bash
+mkdir myapp
+cd myapp
+nix flake init -t github:tenelol/nixar
+```
+
+Run:
+```bash
+nix run
+```
+
+## Install (Go module)
 ```bash
 go get github.com/tenelol/nixar
 ```
