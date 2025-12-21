@@ -6,9 +6,11 @@ import (
 	"github.com/tenelol/nixar/framework"
 )
 
-func Index(c *framework.Context) {
-	c.JSON(http.StatusOK, map[string]any{
-		"message": "Hello from Nixar!",
-	})
+type HelloResponse struct {
+	Message string `json:"message"`
 }
 
+// GET /api/hello
+func HelloAPI(c *framework.Context) {
+	c.JSON(http.StatusOK, HelloResponse{Message: "hello from nixar template"})
+}

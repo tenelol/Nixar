@@ -35,7 +35,7 @@ func main() {
 
 	// 静的ファイル
 	staticHandler := http.StripPrefix("/static/", framework.Static("apps/simple"))
-	app.Get("/static/:file", framework.WrapHTTPHandler(staticHandler))
+	app.Get("/static/*file", framework.WrapHTTPHandler(staticHandler))
 
 	addr := ":8080"
 	log.Println("Listening on", addr)

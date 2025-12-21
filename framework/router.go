@@ -52,14 +52,22 @@ func matchPattern(pattern, path string) (map[string]string, bool) {
 	pSegs := splitPath(pattern)
 	pathSegs := splitPath(path)
 
-	if len(pSegs) != len(pathSegs) {
-		return nil, false
-	}
-
 	params := make(map[string]string)
 
 	for i := 0; i < len(pSegs); i++ {
 		pp := pSegs[i]
+		if strings.HasPrefix(pp, "*") {
+			key := pp[1:]
+			if len(pathSegs) < i {
+				return nil, false
+			}
+			params[key] = strings.Join(pathSegs[i:], "/")
+			return params, true
+		}
+
+		if len(pathSegs) <= i {
+			return nil, false
+		}
 		ps := pathSegs[i]
 
 		if strings.HasPrefix(pp, ":") {
@@ -70,6 +78,10 @@ func matchPattern(pattern, path string) (map[string]string, bool) {
 		if pp != ps {
 			return nil, false
 		}
+	}
+
+	if len(pathSegs) != len(pSegs) {
+		return nil, false
 	}
 
 	return params, true
@@ -87,4 +99,3 @@ func splitPath(p string) []string {
 	}
 	return strings.Split(p, "/")
 }
-

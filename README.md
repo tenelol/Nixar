@@ -1,6 +1,8 @@
 # nixar
 
-Minimal Go web framework built on `net/http`.
+Minimal Go web framework built on `net/http`. The concept is a smallest-possible Go framework paired with a minimal `flake.nix`.
+
+Languages: English | [日本語](README.ja.md)
 
 ## Features
 - Simple routing with `:param` path parameters
@@ -50,7 +52,25 @@ app.Get("/users/:id", func(ctx *framework.Context) {
 ## Static Files
 ```go
 staticHandler := http.StripPrefix("/static/", framework.Static("public"))
-app.Get("/static/:filePath", framework.WrapHTTPHandler(staticHandler))
+app.Get("/static/*filePath", framework.WrapHTTPHandler(staticHandler))
+```
+
+## Nix flake
+This repository includes a minimal `flake.nix` for building and running the example server.
+
+Run the server:
+```bash
+nix run
+```
+
+Build the package:
+```bash
+nix build
+```
+
+Enter the dev shell:
+```bash
+nix develop
 ```
 
 ## Repository Layout

@@ -31,6 +31,16 @@
         program = "${server}/bin/server";
       };
 
+      checks.${system} = {
+        server = server;
+        tests = pkgs.runCommand "nixar-tests" { buildInputs = [ pkgs.go ]; } ''
+          export GOCACHE=$TMPDIR/go-build
+          cd ${self}
+          go test ./...
+          touch $out
+        '';
+      };
+
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.go
