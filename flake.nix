@@ -16,6 +16,12 @@
         modRoot = ".";
         subPackages = [ "./cmd/server" ];
         vendorHash = null;
+
+        postInstall = ''
+          install -d "$out/share/nixar/apps/simple" "$out/share/nixar/static"
+          cp -R apps/simple/*.html "$out/share/nixar/apps/simple/"
+          cp -R static/* "$out/share/nixar/static/"
+        '';
       };
     in {
       # ================= packages / apps =================
@@ -123,7 +129,7 @@
 
               serviceConfig = {
                 WorkingDirectory = cfg.workingDir;
-                ExecStart = "${cfg.package}/bin/server --port ${toString cfg.port} ${lib.concatStringsSep " " cfg.extraArgs}";
+                ExecStart = "${cfg.package}/bin/server --port ${toString cfg.port} --pages-dir ${cfg.package}/share/nixar/apps/simple --static-dir ${cfg.package}/share/nixar/static ${lib.concatStringsSep " " cfg.extraArgs}";
                 User = cfg.user;
                 Group = cfg.group;
                 Restart = "on-failure";

@@ -29,7 +29,6 @@ func (r *Router) Handle(method, pattern string, handler HandlerFunc) {
 	})
 }
 
-// App から呼ばれる内部用ルータ
 func (r *Router) serve(ctx *Context) {
 	method := ctx.Req.Method
 	path := ctx.Req.URL.Path

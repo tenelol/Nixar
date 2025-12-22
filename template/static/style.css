@@ -1,10 +1,10 @@
 :root {
   color-scheme: light;
-  --bg: #f6f4ef;
+  --bg: #eef2f0;
   --text: #1f2a34;
-  --muted: #5f6c77;
+  --muted: #5d6b76;
   --card: #ffffff;
-  --accent: #d3542a;
+  --accent: #0f7b6c;
 }
 
 * {
@@ -14,7 +14,7 @@
 body {
   margin: 0;
   font-family: "IBM Plex Mono", "Courier New", monospace;
-  background: radial-gradient(circle at top, #fff6e8, var(--bg));
+  background: radial-gradient(circle at top, #f5fff9, var(--bg));
   color: var(--text);
 }
 
@@ -48,7 +48,7 @@ body {
 
 .card {
   background: var(--card);
-  border: 1px solid #e6e1d6;
+  border: 1px solid #e0e6e2;
   border-radius: 16px;
   padding: 24px;
   box-shadow: 0 12px 30px rgba(31, 42, 52, 0.08);

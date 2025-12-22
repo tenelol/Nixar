@@ -1,8 +1,6 @@
 package framework
 
 import "net/http"
-
-// 静的ファイル用ハンドラ（no-cache）
 func Static(dir string) http.Handler {
 	fs := http.FileServer(http.Dir(dir))
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
@@ -13,4 +11,3 @@ func Static(dir string) http.Handler {
 		fs.ServeHTTP(w, r)
 	})
 }
-

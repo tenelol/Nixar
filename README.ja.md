@@ -63,9 +63,15 @@ app.Get("/users/:id", func(ctx *framework.Context) {
 
 ## 静的ファイル
 ```go
-staticHandler := http.StripPrefix("/static/", framework.Static("public"))
+staticHandler := http.StripPrefix("/static/", framework.Static("static"))
 app.Get("/static/*filePath", framework.WrapHTTPHandler(staticHandler))
 ```
+`static` は例です。任意のディレクトリを指定できます。
+
+## サーバフラグ
+- `--port`（デフォルト: `8080`）
+- `--pages-dir`（デフォルト: `apps/simple`）
+- `--static-dir`（デフォルト: `static`）
 
 ## Nix flake
 このリポジトリには、サンプルサーバのビルドと実行のための最小構成 `flake.nix` が含まれています。
@@ -89,7 +95,32 @@ nix develop
 - `framework/` コアフレームワーク
 - `cmd/server/` サンプルサーバのエントリ
 - `apps/simple/` ミニマルサイト＋APIの例
+- `static/` サンプルサーバの静的アセット
 - `template/` スターターテンプレート（Go + Nix flake）
+
+## NixOS モジュール
+NixOS 設定で有効にすると systemd サービスとして常駐起動します。
+サンプルの HTML と静的アセットはパッケージに同梱され、自動で配信されます。
+
+例（flake ベース）:
+```nix
+{
+  inputs.nixar.url = "github:tenelol/nixar";
+
+  outputs = { self, nixar, nixpkgs, ... }: {
+    nixosConfigurations.my-host = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        nixar.nixosModules.nixar
+        {
+          services.nixar.enable = true;
+          services.nixar.port = 8080;
+        }
+      ];
+    };
+  };
+}
+```
 
 ## ライセンス
 MIT. 詳細は `LICENSE` を参照してください。

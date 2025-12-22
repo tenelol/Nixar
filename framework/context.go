@@ -12,7 +12,6 @@ type Context struct {
 	App    *App
 }
 
-// ルートパラメータ
 func (c *Context) Param(key string) string {
 	if c.Params == nil {
 		return ""
@@ -20,7 +19,6 @@ func (c *Context) Param(key string) string {
 	return c.Params[key]
 }
 
-// クエリ取得
 func (c *Context) Query(key string) string {
 	return c.Req.URL.Query().Get(key)
 }
@@ -33,14 +31,12 @@ func (c *Context) QueryDefault(key, def string) string {
 	return v
 }
 
-// ★ ここを書き換え
 func (c *Context) JSON(status int, v any) {
 	c.W.Header().Set("Content-Type", "application/json; charset=utf-8")
 	c.W.WriteHeader(status)
 	_ = json.NewEncoder(c.W).Encode(v)
 }
 
-// HTMLファイル送信（no-cache）
 func (c *Context) HTMLFile(path string) {
 	c.W.Header().Set("Cache-Control", "no-cache, no-store, must-revalidate")
 	c.W.Header().Set("Pragma", "no-cache")
@@ -48,4 +44,3 @@ func (c *Context) HTMLFile(path string) {
 
 	http.ServeFile(c.W, c.Req, path)
 }
-

@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-// Contextベースのロギングミドルウェア
 func Logging() Middleware {
 	return func(next HandlerFunc) HandlerFunc {
 		return func(c *Context) {
@@ -23,4 +22,3 @@ func Logging() Middleware {
 		}
 	}
 }
-

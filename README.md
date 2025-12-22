@@ -63,9 +63,15 @@ app.Get("/users/:id", func(ctx *framework.Context) {
 
 ## Static Files
 ```go
-staticHandler := http.StripPrefix("/static/", framework.Static("public"))
+staticHandler := http.StripPrefix("/static/", framework.Static("static"))
 app.Get("/static/*filePath", framework.WrapHTTPHandler(staticHandler))
 ```
+`static` is just an example; you can serve any directory.
+
+## Server flags
+- `--port` (default: `8080`)
+- `--pages-dir` (default: `apps/simple`)
+- `--static-dir` (default: `static`)
 
 ## Nix flake
 This repository includes a minimal `flake.nix` for building and running the example server.
@@ -89,7 +95,32 @@ nix develop
 - `framework/` core framework
 - `cmd/server/` example server entry
 - `apps/simple/` example app (minimal site + API)
+- `static/` static assets for the sample server
 - `template/` starter template (Go + Nix flake)
+
+## NixOS module
+Enable the module in your NixOS configuration and it will run the server as a systemd service.
+It also bundles the sample HTML and static assets and serves them automatically.
+
+Example (flake-based):
+```nix
+{
+  inputs.nixar.url = "github:tenelol/nixar";
+
+  outputs = { self, nixar, nixpkgs, ... }: {
+    nixosConfigurations.my-host = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        nixar.nixosModules.nixar
+        {
+          services.nixar.enable = true;
+          services.nixar.port = 8080;
+        }
+      ];
+    };
+  };
+}
+```
 
 ## License
 MIT. See `LICENSE`.
