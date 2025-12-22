@@ -44,7 +44,6 @@
       devShells.${system}.default = pkgs.mkShell {
         buildInputs = [
           pkgs.go
-          pkgs.gopls
           pkgs.golangci-lint
           pkgs.air
           pkgs.nodejs_22
